@@ -66,5 +66,7 @@ O arquivo `README.md` deve conter:
 A entrega deve ser realizada através do formulário disponibilizado pelo professor, contendo o link do seu repositório público.
 
 ---
+## Prova de branch protection
+<img width="537" height="702" alt="image" src="https://github.com/user-attachments/assets/af4e962f-efc0-40d8-a375-61c85b5c31f0" />
+<img width="537" height="552" alt="image" src="https://github.com/user-attachments/assets/3f717be6-a648-4058-b85d-ee4fe4b5723d" />
 
-> **Atenção:** Não esqueça de anexar no final deste README ou na documentação do projeto um print comprovando que a regra de **Branch Protection** da `main` foi configurada no GitHub.
