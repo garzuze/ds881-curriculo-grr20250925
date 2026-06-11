@@ -35,7 +35,7 @@ O repositório deve fornecer a infraestrutura necessária para que o projeto pos
 
 ### 2.3. Workflow de Git e Governança
 
-Apesar de ser um projeto individual, o projeto deve seguir as boas prática do desenvolvimento com git:
+Apesar de ser um projeto individual, o projeto deve seguir as boas prática do desenvolvimento com Git:
 
 - **Proteção de Branch:** A branch `main` deve estar configurada como protegida nas configurações do repositório.
 - **Fluxo de Trabalho:** É proibido realizar _push_ direto na `main`. Toda alteração deve ser feita em uma branch secundária (ex: `feat/nome-da-feature`) e integrada via **Pull Request (PR)**.
