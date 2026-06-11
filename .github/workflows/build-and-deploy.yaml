@@ -34,11 +34,13 @@ jobs:
         with:
           fetch-depth: 1
           persist-credentials: false
+
       - name: Install pnpm
         uses: pnpm/action-setup@0e279bb959325dab635dd2c09392533439d90093
         with:
           version: 10
           cache: true
+
       - name: Create dist directory
         run: mkdir -p dist
 
@@ -53,8 +55,10 @@ jobs:
 
       - name: Run tailwind cli
         run: npx @tailwindcss/cli -i ./src/input.css -o ./dist/output.css
+
       - name: Move index from src to dist
         run: mv src/index.html dist/
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa
         with:
@@ -62,6 +66,7 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b
+
   deploy:
     name: Deploy
     needs: build
