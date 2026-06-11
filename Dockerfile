@@ -12,10 +12,13 @@ COPY src/input.css src/index.html ./src/
 
 RUN npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css
 
-FROM nginx:alpine AS deploy
+
+FROM nginxinc/nginx-unprivileged:alpine AS deploy
 
 COPY --from=build /app/src /usr/share/nginx/html
 
-EXPOSE 80
+USER nginx
+
+EXPOSE 8080
 
 CMD ["nginx", "-g", "daemon off;"]
