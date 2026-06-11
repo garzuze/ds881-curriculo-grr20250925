@@ -1,5 +1,7 @@
-# Peguei da aba do actions e resolvi preservar os comentários!
-# Simple workflow for deploying static content to GitHub Pages
+# A parte do deploy peguei da aba do actions
+# Depois adicionei a build e fiz inspirado no trabalho anterior
+# https://github.com/sabrina-dp/ds881-tmdb-app-github-actions-t/blob/release/.github/workflows/push-tasks.yml
+
 name: Deploy static content to Pages
 
 on:
@@ -23,25 +25,56 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10
         with:
           fetch-depth: 1
           persist-credentials: false
-      - name: Setup Pages
-        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b
+
+      - name: Create dist directory
+        run: mkdir -p dist
+
+      - name: Move index from src to dist
+        run: mv src/index.html dist/
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tailwind cli
+        run: npx @tailwindcss/cli -i ./src/input.css -o ./dist/output.css
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa
         with:
-          # Upload entire repository
-          path: "."
+          path: dist/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b
+  deploy:
+    name: Deploy
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128
