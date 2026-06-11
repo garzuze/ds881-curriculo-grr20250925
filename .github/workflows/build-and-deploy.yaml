@@ -42,9 +42,6 @@ jobs:
       - name: Create dist directory
         run: mkdir -p dist
 
-      - name: Move index from src to dist
-        run: mv src/index.html dist/
-
       - name: Setup Node.js 20
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -56,7 +53,8 @@ jobs:
 
       - name: Run tailwind cli
         run: npx @tailwindcss/cli -i ./src/input.css -o ./dist/output.css
-
+      - name: Move index from src to dist
+        run: mv src/index.html dist/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa
         with:
