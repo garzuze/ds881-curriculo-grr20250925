@@ -46,17 +46,17 @@ Apesar de ser um projeto individual, o projeto deve seguir as boas prática do d
 
 Implementação de um workflow automatizado (`.github/workflows/main.yml`) contendo:
 
-1.  **Linter/Static Analysis:** Verificação de sintaxe e padrões de código.
-2.  **Build:** Validação de que a aplicação compila corretamente dentro do ambiente de CI.
-3.  **Deploy:** Publicação automatizada no GitHub Pages disparada após o merge na branch `main`.
+1. **Linter/Static Analysis:** Verificação de sintaxe e padrões de código.
+2. **Build:** Validação de que a aplicação compila corretamente dentro do ambiente de CI.
+3. **Deploy:** Publicação automatizada no GitHub Pages disparada após o merge na branch `main`.
 
 ## 3. Documentação
 
 O arquivo `README.md` deve conter:
 
-1.  Link público do currículo em produção.
-2.  Instruções detalhadas para execução do ambiente local via Docker.
-3.  Prints ou descrição da configuração de proteção da branch `main` aplicada no GitHub.
+1. Link público do currículo em produção.
+2. Instruções detalhadas para execução do ambiente local via Docker.
+3. Prints ou descrição da configuração de proteção da branch `main` aplicada no GitHub.
 
 ## 4. Critérios de Avaliação
 
